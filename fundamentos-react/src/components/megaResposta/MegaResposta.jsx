@@ -28,7 +28,7 @@ export default (props) => {
 
   return (
     <div className="MegaResultado">
-      <h2>Mega Sena Resposta</h2>
+      <h2>Mega-Sena Resposta</h2>
       <h3>{numeros.join("-")}</h3>
       <div>
         <label>Qtde de Números</label>
