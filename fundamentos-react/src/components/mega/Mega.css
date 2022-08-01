@@ -1,0 +1,25 @@
+.Mega {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Mega .TamJogo{
+    margin: 20px;
+    font-size: 1.4em;
+}
+
+.Mega .TamJogo input{
+    width: 70px;
+    font-size: 1.1em;
+}
+
+.Mega button{
+    height: 50px;
+    width: 100px;
+    border: 0;
+    border-radius: 10%;
+    background-color: #9b4679;
+    color: #fff;
+    font-size: 1.4rem;
+}
