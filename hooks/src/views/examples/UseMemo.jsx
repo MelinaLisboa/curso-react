@@ -1,13 +1,40 @@
 import React from 'react'
+import { useMemo } from 'react'
+import { useState } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 
+function sum(a, b) {
+    const future = Date.now() + 2000
+    while(Date.now() < future) {} //espera 2 segundos
+    return a + b
+}
+
 const UseMemo = (props) => {
+
+    const [n1, setN1] = useState(0)
+    const [n2, setN2] = useState(0)
+    const [n3, setN3] = useState(0)
+
+    //const result = sum(n1, n2) Se for feito assim, toda vez que edita n3, há também a espera de 2 segundos, o que fica ruim.
+
+    // result é calculado e guardado em cache e só será chamado novamente, caso uma das dependências (n1, n2) sejam alteradas. Para solução podemos usar o useMemo ou useState + useEffect.
+    const result = useMemo(() => sum(n1, n2), [n1, n2])
+
     return (
         <div className="UseMemo">
             <PageTitle
                 title="Hook UseMemo"
-                subtitle="Retorna um valor memoizado!"
+                subtitle="Retorna um valor memoizado! (cache de memoria)"
             />
+            <div className="center">
+                <input type="number" className="input" 
+                value={n1} onChange={e => setN1(parseInt(e.target.value))}/>
+                <input type="number" className="input" 
+                value={n2} onChange={e => setN2(parseInt(e.target.value))}/>
+                <input type="number" className="input" 
+                value={n3} onChange={e => setN3(parseInt(e.target.value))}/>
+                <span className="text">{result}</span>
+            </div>
         </div>
     )
 }
