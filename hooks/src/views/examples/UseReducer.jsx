@@ -14,8 +14,16 @@ const initialState = {
 //recebe o estado atual e o evolui
 function reducer(state, action) {
     switch(action.type){
-        case 'number_add2':
+        case 'numberAdd2':
             return {...state, number: state.number + 2}
+        case 'numberMultiply7':
+            return {...state, number: state.number * 7}
+        case 'numberDivide25':
+            return {...state, number: state.number / 25}
+        case 'numberInt':
+            return {...state, number: parseInt(state.number)}
+        case 'numberAddN':
+            return {...state, number: state.number + parseInt(action.n)}
         case 'login':
             return {...state, user: {name: action.payload}}
         default:
@@ -42,7 +50,17 @@ const UseReducer = (props) => {
                     <button className="btn"
                     onClick={() => dispatch({type: 'login', payload: 'Melina'})}>Login</button>
                     <button className="btn"
-                    onClick={() => dispatch({type: 'number_add2'})}>+2</button>
+                    onClick={() => dispatch({type: 'numberAdd2'})}>+2</button>
+                    <button className="btn"
+                    onClick={() => dispatch({type: 'numberAddN', n: '5'})}>+5</button>
+                    <button className="btn"
+                    onClick={() => dispatch({type: 'numberAddN', n: '-2'})}>-2</button>
+                    <button className="btn"
+                    onClick={() => dispatch({type: 'numberMultiply7'})}>*7</button>
+                    <button className="btn"
+                    onClick={() => dispatch({type: 'numberDivide25'})}>/25</button>
+                    <button className="btn"
+                    onClick={() => dispatch({type: 'numberInt'})}>Inteiro</button>
                 </div>
             </div>
         </div>
