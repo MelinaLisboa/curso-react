@@ -2,34 +2,13 @@ import React from 'react'
 import { useReducer } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 
+/**useReducer() usado em telas mais complexas, que possuem várias funcionalidades. Ou também o utiliza em um contexto mais global da aplicação
+ * 
+ * useReducer() é uma alternativa ao useState(), que é usado em objetos mais simples, valores primitivos (números e strings, por exemplo, e quando se tem um objeto mais complexo, com várias formas diferentes de manter o estado, é melhor usar o useReducer() e o estado da aplicação pode ser organizado de uma forma mais complexa, mas que traga também uma simplicidade de manutenção)
+*/
 
-const initialState = {
-    cart: [],
-    products: [],
-    user: null,
-    //foco...
-    number: 0
-}
-
-//recebe o estado atual e o evolui
-function reducer(state, action) {
-    switch(action.type){
-        case 'numberAdd2':
-            return {...state, number: state.number + 2}
-        case 'numberMultiply7':
-            return {...state, number: state.number * 7}
-        case 'numberDivide25':
-            return {...state, number: state.number / 25}
-        case 'numberInt':
-            return {...state, number: parseInt(state.number)}
-        case 'numberAddN':
-            return {...state, number: state.number + parseInt(action.n)}
-        case 'login':
-            return {...state, user: {name: action.payload}}
-        default:
-            return state
-    }
-}
+import {initialState, reducer} from  '../../store'; //organização do projeto
+import { numberAdd2, login } from '../../store/actions';
 
 const UseReducer = (props) => {
 
@@ -48,9 +27,9 @@ const UseReducer = (props) => {
                 <span className="text">{state.number}</span>
                 <div>
                     <button className="btn"
-                    onClick={() => dispatch({type: 'login', payload: 'Melina'})}>Login</button>
+                    onClick={() => login(dispatch, 'Melina')}>Login</button>
                     <button className="btn"
-                    onClick={() => dispatch({type: 'numberAdd2'})}>+2</button>
+                    onClick={() => numberAdd2(dispatch)}>+2</button>
                     <button className="btn"
                     onClick={() => dispatch({type: 'numberAddN', n: '5'})}>+5</button>
                     <button className="btn"
