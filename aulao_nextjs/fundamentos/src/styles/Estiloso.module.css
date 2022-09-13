@@ -1,0 +1,11 @@
+.roxo {
+    height: 100vh;
+    background-color: #670bbd;
+    color: #fff;
+}
+
+/* Não pode usar h1 direto, dentro de um arquivo module.css, tem que fazer uso de classe ou id.
+   Pode usar apenas dentro dos css globais */
+.roxo h1 {
+    margin: 0;
+}
