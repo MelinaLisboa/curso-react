@@ -5,7 +5,7 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         path: __dirname + '/public',
-        filename: './app.js'
+        filename: './app.js',
     },
     devServer: {
         port: 8080,
@@ -20,7 +20,7 @@ module.exports = {
         }
     },
     plugins: [
-        new webpack.ProgressPlugin({
+        new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
